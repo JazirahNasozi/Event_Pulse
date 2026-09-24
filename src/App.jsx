@@ -1,121 +1,122 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
+import heroImg from './assets/hero.png'
+import logoImg from './assets/logo.png'
+import faviconImg from './assets/favicon.png'
+
+const featureCards = [
+  {
+    title: 'Event registration',
+    detail: 'Launch one-click signups, ticket tiers, and instant confirmation flows.',
+    accent: 'live',
+  },
+  {
+    title: 'Smart payments',
+    detail: 'Collect ticket sales with secure checkout and automatic receipts.',
+    accent: 'pay',
+  },
+  {
+    title: 'Attendance insights',
+    detail: 'Track real-time check-ins, drop-offs, and capacity utilization.',
+    accent: 'pulse',
+  },
+]
+
+const stats = [
+  { value: '12k+', label: 'registrations' },
+  { value: '96%', label: 'attendance' },
+  { value: '2.4x', label: 'more reach' },
+]
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="page-shell">
+      <header className="topbar">
+        <div className="brand-mark" aria-label="EventPulse home">
+          <img src={logoImg} alt="EventPulse logo" className="brand-logo" />
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+
+        <nav className="main-nav" aria-label="Main navigation">
+          <a href="#features">Features</a>
+          <a href="#journeys">Journeys</a>
+          <a href="#analytics">Analytics</a>
+        </nav>
+
+        <div className="nav-actions">
+          <button type="button" className="nav-button secondary">
+            Log in
+          </button>
+          <button type="button" className="nav-button primary">
+            Book demo
+          </button>
+        </div>
+      </header>
+
+      <main className="hero-layout">
+        <section className="copy-column">
+          <div className="eyebrow">Built for modern event teams</div>
+          <h1>The heartbeat of every event.</h1>
+          <p className="lede">
+            EventPulse helps organizers manage registrations, ticket payments,
+            attendee communication, live analytics, and post-event feedback from one
+            accessible platform.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+
+          <div className="cta-row">
+            <button type="button" className="primary-cta">
+              Get started
+            </button>
+            <button type="button" className="secondary-cta">
+              View overview
+            </button>
+          </div>
+
+          <div className="stats-row" aria-label="Key performance stats">
+            {stats.map((stat) => (
+              <div className="stat-card" key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <aside className="hero-visual" aria-label="EventPulse revenue overview">
+          <img src={heroImg} alt="EventPulse dashboard preview" className="hero-image" />
+        </aside>
+      </main>
+
+      <section className="feature-panel" id="features">
+        {featureCards.map((card) => (
+          <article className="feature-card" key={card.title}>
+            <span className={`feature-dot ${card.accent}`} aria-hidden="true" />
+            <h2>{card.title}</h2>
+            <p>{card.detail}</p>
+          </article>
+        ))}
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <section className="bottom-strip" id="journeys">
+        <div className="bottom-copy">
+          <span className="eyebrow">Inclusive by design</span>
+          <h2>One platform for every attendee journey.</h2>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+
+        <div className="journey-list" id="analytics">
+          <div>
+            <strong>Discover</strong>
+            <span>Find events in seconds</span>
+          </div>
+          <div>
+            <strong>Register</strong>
+            <span>Web, SMS, and USSD support</span>
+          </div>
+          <div>
+            <strong>Track</strong>
+            <span>Monitor attendance and sales live</span>
+          </div>
         </div>
       </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    </div>
   )
 }
 

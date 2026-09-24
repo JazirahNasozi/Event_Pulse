@@ -1,16 +1,119 @@
-# React + Vite
+# EventPulse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**The heartbeat of every event.**
 
-Currently, two official plugins are available:
+EventPulse is an accessible event management platform that helps organizers manage the entire event lifecycle, from registration and ticket sales to attendee communication, attendance tracking, feedback collection, and analytics.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The platform works for both smartphone and feature-phone users through web, SMS, and USSD channels, making event participation more inclusive across different levels of connectivity and device access.
 
-## React Compiler
+## Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Event organizers can create and manage events, sell tickets, communicate with attendees, track attendance, and view real-time event insights from a centralized dashboard.
 
-## Expanding the ESLint configuration
+Attendees can register through the web or USSD, purchase tickets, receive confirmations and reminders via SMS, check in at events, and share feedback afterward.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Focus Areas
+
+- Event Registration & Ticketing
+- Event Communication
+- Ticket Payments
+- Event Analytics & Feedback
+
+## Key Features
+
+**Event Creation & Management**
+- Create and manage events
+- Set event details, venue, date, capacity, and ticket pricing
+
+**Multi-Channel Registration**
+- Web registration
+- USSD registration for users without smartphones
+
+**Ticketing System**
+- Digital ticket generation with unique ticket IDs
+- QR-code based tickets and check-in
+
+**Early Bird & Multiple Ticket Types**
+- Early Bird, Regular, and VIP ticket tiers
+- Automatic switching to regular pricing when Early Bird sales expire or sell out
+
+**Ticket Payments**
+- Integrated payment flow using Africa's Talking Payments API
+- Payment confirmation notifications
+
+**Event Communication**
+- Registration and payment confirmations via SMS
+- Event reminders, updates, and announcements
+- Post-event messages
+
+**Attendance & Check-In**
+- Ticket ID or QR-code check-in
+- Attendance tracking
+
+**Feedback Collection**
+- SMS-based feedback collection
+- Online feedback forms
+- Event ratings and attendee comments
+
+**Analytics Dashboard**
+- Registration numbers and capacity utilization
+- Revenue tracking and ticket sales by category
+- Attendance rates
+- Feedback analytics
+- SMS delivery statistics
+
+**Live Registration Counter**
+- Real-time registrations
+- Remaining event slots
+- Capacity monitoring
+
+**Organizer Command Center**
+- Central dashboard showing registrations, revenue, attendance, communication metrics, and overall event performance
+
+## Tech Stack
+
+- **Frontend:** React (Vite)
+- **Communication & Payments:** Africa's Talking APIs
+  - SMS API
+  - USSD API
+  - Payments API
+  - Chat API (optional)
+
+## User Journeys
+
+**Attendee Journey**
+Discover Event → Register → Pay → Receive Ticket → Attend Event → Give Feedback
+
+**Organizer Journey**
+Create Event → Manage Registrations → Track Payments → Communicate with Attendees → Monitor Attendance → Analyze Event Performance
+
+## Brand
+
+- Primary: Navy Blue
+- Secondary: Teal `#0F9D8A`
+
+## Goal
+
+To provide a single platform that combines registration, payments, communication, attendance tracking, and analytics, while remaining accessible to both smartphone and feature-phone users.
+
+## Getting Started
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd event-pulse
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+## Contributing
+
+This project is being built as a team. Please branch off `main` for new features and open a pull request for review before merging.
+
+## License
+
+TBD
