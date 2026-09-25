@@ -25,7 +25,7 @@ const stats = [
   { value: '2.4x', label: 'more reach' },
 ]
 
-function HomePage({ onHome, onLogin, onSignup, onDashboard }) {
+function HomePage({ onHome, onLogin, onSignup, onAnalytics }) {
   return (
     <div className="page-shell">
       <header className="topbar">
@@ -36,7 +36,7 @@ function HomePage({ onHome, onLogin, onSignup, onDashboard }) {
         <nav className="main-nav" aria-label="Main navigation">
           <a href="#features">Features</a>
           <a href="#journeys">Journeys</a>
-          <button type="button" className="nav-link-button" onClick={onDashboard}>Analytics</button>
+          <button type="button" className="nav-link-button" onClick={onAnalytics}>Analytics</button>
         </nav>
 
         <div className="nav-actions">
