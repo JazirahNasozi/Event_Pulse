@@ -16,14 +16,14 @@ function LoginPage({ onHome, onSignup, onDashboard }) {
               <input id="login-email" type="text" placeholder="alex@eventpulse.io" />
               <div className="field-heading">
                 <label htmlFor="login-password">Password</label>
-                <button type="button" className="text-action">Forgot password?</button>
+                <button type="button" className="text-action" onClick={onSignup}>Forgot password?</button>
               </div>
               <input id="login-password" type="password" placeholder="••••••••" />
               <button type="submit" className="auth-submit">Sign in</button>
             </form>
 
             <div className="auth-divider"><span>or continue with</span></div>
-            <button type="button" className="google-button"><span>G</span> Continue with Google</button>
+            <button type="button" className="google-button" onClick={onDashboard}><span>G</span> Continue with Google</button>
             <button type="button" className="create-account-button" onClick={onSignup}>Create account</button>
             <p className="auth-switch">Don't have an account? <button type="button" onClick={onSignup}>Create account</button></p>
           </div>
