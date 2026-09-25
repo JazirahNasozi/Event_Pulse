@@ -110,6 +110,12 @@ npm install
 npm run dev
 ```
 
+## Backend Handoff
+
+The frontend currently uses local demo state and is ready to be connected to an API. See [BACKEND_HANDOFF.md](BACKEND_HANDOFF.md) for the endpoint contracts, payloads, response shapes, security requirements, and the exact frontend files that need to be switched from mock data to API data.
+
+Copy `.env.example` to `.env.local` and set `VITE_API_BASE_URL` to the backend API origin.
+
 ## Contributing
 
 This project is being built as a team. Please branch off `main` for new features and open a pull request for review before merging.

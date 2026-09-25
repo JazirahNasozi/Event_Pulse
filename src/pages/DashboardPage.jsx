@@ -21,8 +21,9 @@ const activities = [
   { icon: '♧', title: 'James checked in', detail: 'Gate Turnstile 01 • QR Verified', time: '2h ago', tone: 'indigo' },
 ]
 
-function DashboardPage({ onHome, onCreateEvent }) {
+function DashboardPage({ onHome, onCreateEvent, onTicketing, onBroadcast, onEventDetails, onAnalytics }) {
   const openCreateEvent = () => onCreateEvent()
+  const openEventDetails = () => onEventDetails()
 
   return (
     <div className="dashboard-page">
@@ -32,7 +33,7 @@ function DashboardPage({ onHome, onCreateEvent }) {
         </button>
         <div className="dashboard-top-actions">
           <span className="sync-status"><i /> Live sync • Just now</span>
-          <button type="button" className="profile-button">PC</button>
+          <button type="button" className="profile-button" onClick={onEventDetails}>PC</button>
         </div>
       </header>
 
@@ -46,7 +47,7 @@ function DashboardPage({ onHome, onCreateEvent }) {
           <button type="button" className="dashboard-primary-action" onClick={openCreateEvent}>+ Create event</button>
         </section>
 
-        <section className="event-banner">
+        <section className="event-banner" onClick={openEventDetails} role="button" tabIndex="0" onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') openEventDetails() }}>
           <div className="event-banner-image">
             <span className="live-pill"><i /> LIVE IN 3 DAYS</span>
             <span className="event-capacity">92% Booked</span>
@@ -57,14 +58,14 @@ function DashboardPage({ onHome, onCreateEvent }) {
               <h2>PulseLive East Africa Tech &amp; Music Summit</h2>
               <div className="event-details"><span>▣ Fri, Oct 24 • 6:00 PM EAT</span><span>⌖ Kololo Ceremonial Grounds, Kampala</span></div>
             </div>
-            <button type="button" className="view-event-button">View event <span>→</span></button>
+            <button type="button" className="view-event-button" onClick={(event) => { event.stopPropagation(); openEventDetails() }}>View event <span>→</span></button>
           </div>
         </section>
 
         <section className="dashboard-section">
           <div className="section-heading">
             <div><h2>Overview</h2><span>Live sync • Just now</span></div>
-            <button type="button" className="section-link">View report →</button>
+            <button type="button" className="section-link" onClick={onAnalytics}>View report →</button>
           </div>
           <div className="metrics-grid">
             {metrics.map((metric) => (
@@ -95,23 +96,23 @@ function DashboardPage({ onHome, onCreateEvent }) {
 
           <article className="actions-card">
             <div className="section-heading"><div><h2>Quick actions</h2><span>Keep your event moving</span></div></div>
-            <div className="actions-grid">{actions.map((action) => <button type="button" key={action.label} className="quick-action" onClick={action.label === 'Create event' ? openCreateEvent : undefined}><b className={`quick-icon ${action.tone}`}>{action.icon}</b><span>{action.label}</span></button>)}</div>
+            <div className="actions-grid">{actions.map((action) => <button type="button" key={action.label} className="quick-action" onClick={action.label === 'Create event' ? openCreateEvent : action.label === 'Manage tickets' ? onTicketing : action.label === 'Send SMS' ? onBroadcast : action.label === 'Check in' ? onEventDetails : undefined}><b className={`quick-icon ${action.tone}`}>{action.icon}</b><span>{action.label}</span></button>)}</div>
             <div className="capacity-card"><div><span>Event capacity</span><strong>248 / 300</strong></div><div className="capacity-bar"><i /></div><small>52 spots remaining</small></div>
           </article>
         </section>
 
         <section className="activity-card">
-          <div className="section-heading"><div><h2>Recent activity</h2><span>Latest updates from your event</span></div><button type="button" className="section-link">View all →</button></div>
+          <div className="section-heading"><div><h2>Recent activity</h2><span>Latest updates from your event</span></div><button type="button" className="section-link" onClick={onEventDetails}>View all →</button></div>
           <div className="activity-list">{activities.map((activity) => <div className="activity-row" key={activity.title}><b className={`activity-icon ${activity.tone}`}>{activity.icon}</b><div><strong>{activity.title}</strong><span>{activity.detail}</span></div><time>{activity.time}</time></div>)}</div>
         </section>
       </main>
 
       <nav className="dashboard-nav" aria-label="Dashboard navigation">
         <button type="button" className="active"><span>⌂</span>Home</button>
-        <button type="button"><span>▣</span>Events</button>
-        <button type="button"><span>⌗</span>Check-in</button>
-        <button type="button"><span>⌁</span>Analytics</button>
-        <button type="button"><span>◉</span>Profile</button>
+        <button type="button" onClick={openEventDetails}><span>▣</span>Events</button>
+        <button type="button" onClick={openEventDetails}><span>⌗</span>Check-in</button>
+        <button type="button" onClick={onAnalytics}><span>⌁</span>Analytics</button>
+        <button type="button" onClick={openEventDetails}><span>◉</span>Profile</button>
       </nav>
     </div>
   )

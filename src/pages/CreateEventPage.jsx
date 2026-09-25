@@ -51,7 +51,7 @@ function CreateEventPage({ onDashboard, onTicketing }) {
               <label className="switch-row"><span><strong>Enable attendee feedback collection</strong><small>Collect feedback after the event ends.</small></span><input type="checkbox" defaultChecked /></label>
             </section>
 
-            <div className="create-event-actions"><button type="button" className="save-draft">Save as draft</button><button type="button" className="continue-button" onClick={onTicketing}>Continue to ticketing <span>→</span></button></div>
+            <div className="create-event-actions"><button type="button" className="save-draft" onClick={onDashboard}>Save as draft</button><button type="button" className="continue-button" onClick={onTicketing}>Continue to ticketing <span>→</span></button></div>
           </form>
         </section>
 
@@ -59,7 +59,7 @@ function CreateEventPage({ onDashboard, onTicketing }) {
           <div className="preview-label"><i /> Live attendee preview</div>
           <article className="attendee-preview">
             <div className="preview-art"><span>LIVE EVENT</span></div>
-            <div className="preview-content"><div className="preview-tags"><span>Conference</span><span>Registration open</span></div><h2>SaaS Frontiers 2026: The AI Expansion</h2><p className="preview-host">Hosted by EventPulse Network</p><div className="preview-details"><span>▣ November 14, 2026</span><span>◷ 09:00 AM - 05:00 PM</span><span>⌖ Metropolitan Pavilion, New York, NY</span></div><h3>About this event</h3><p>Join 500+ SaaS founders, product builders, and operators for a day of deep dives into AI agent implementation, next-generation growth loops, and scaling mechanics.</p><button type="button">Register now</button></div>
+            <div className="preview-content"><div className="preview-tags"><span>Conference</span><span>Registration open</span></div><h2>SaaS Frontiers 2026: The AI Expansion</h2><p className="preview-host">Hosted by EventPulse Network</p><div className="preview-details"><span>▣ November 14, 2026</span><span>◷ 09:00 AM - 05:00 PM</span><span>⌖ Metropolitan Pavilion, New York, NY</span></div><h3>About this event</h3><p>Join 500+ SaaS founders, product builders, and operators for a day of deep dives into AI agent implementation, next-generation growth loops, and scaling mechanics.</p><button type="button" onClick={onTicketing}>Register now</button></div>
           </article>
         </aside>
       </main>

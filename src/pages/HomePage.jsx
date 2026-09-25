@@ -25,11 +25,11 @@ const stats = [
   { value: '2.4x', label: 'more reach' },
 ]
 
-function HomePage({ onLogin, onSignup, onDashboard }) {
+function HomePage({ onHome, onLogin, onSignup, onDashboard }) {
   return (
     <div className="page-shell">
       <header className="topbar">
-        <button type="button" className="brand-mark" aria-label="EventPulse home">
+        <button type="button" className="brand-mark" aria-label="EventPulse home" onClick={onHome}>
           <img src={logoImg} alt="EventPulse logo" className="brand-logo" />
         </button>
 
