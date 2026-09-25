@@ -1,49 +1,68 @@
-import heroImg from '../assets/hero.png'
-import logoImg from '../assets/logo.png'
+import heroImg from "../assets/hero.png";
+import logoImg from "../assets/logo.png";
 
 const featureCards = [
   {
-    title: 'Event registration',
-    detail: 'Launch one-click signups, ticket tiers, and instant confirmation flows.',
-    accent: 'live',
+    title: "Event registration",
+    detail:
+      "Launch one-click signups, ticket tiers, and instant confirmation flows.",
+    accent: "live",
   },
   {
-    title: 'Smart payments',
-    detail: 'Collect ticket sales with secure checkout and automatic receipts.',
-    accent: 'pay',
+    title: "Smart payments",
+    detail: "Collect ticket sales with secure checkout and automatic receipts.",
+    accent: "pay",
   },
   {
-    title: 'Attendance insights',
-    detail: 'Track real-time check-ins, drop-offs, and capacity utilization.',
-    accent: 'pulse',
+    title: "Attendance insights",
+    detail: "Track real-time check-ins, drop-offs, and capacity utilization.",
+    accent: "pulse",
   },
-]
+];
 
 const stats = [
-  { value: '12k+', label: 'registrations' },
-  { value: '96%', label: 'attendance' },
-  { value: '2.4x', label: 'more reach' },
-]
+  { value: "12k+", label: "registrations" },
+  { value: "96%", label: "attendance" },
+  { value: "2.4x", label: "more reach" },
+];
 
-function HomePage({ onLogin, onSignup, onDashboard }) {
+function HomePage({ onLogin, onSignup, onDashboard, onEventDetails }) {
   return (
     <div className="page-shell">
       <header className="topbar">
-        <button type="button" className="brand-mark" aria-label="EventPulse home">
+        <button
+          type="button"
+          className="brand-mark"
+          aria-label="EventPulse home"
+        >
           <img src={logoImg} alt="EventPulse logo" className="brand-logo" />
         </button>
 
         <nav className="main-nav" aria-label="Main navigation">
           <a href="#features">Features</a>
           <a href="#journeys">Journeys</a>
-          <button type="button" className="nav-link-button" onClick={onDashboard}>Analytics</button>
+          <button
+            type="button"
+            className="nav-link-button"
+            onClick={onDashboard}
+          >
+            Analytics
+          </button>
         </nav>
 
         <div className="nav-actions">
-          <button type="button" className="nav-button secondary" onClick={onLogin}>
+          <button
+            type="button"
+            className="nav-button secondary"
+            onClick={onLogin}
+          >
             Log in
           </button>
-          <button type="button" className="nav-button primary" onClick={onSignup}>
+          <button
+            type="button"
+            className="nav-button primary"
+            onClick={onSignup}
+          >
             Book demo
           </button>
         </div>
@@ -55,15 +74,22 @@ function HomePage({ onLogin, onSignup, onDashboard }) {
           <h1>The heartbeat of every event.</h1>
           <p className="lede">
             EventPulse helps organizers manage registrations, ticket payments,
-            attendee communication, live analytics, and post-event feedback from one
-            accessible platform.
+            attendee communication, live analytics, and post-event feedback from
+            one accessible platform.
           </p>
 
           <div className="cta-row">
-            <button type="button" className="primary-cta" onClick={onSignup}>
+            <button
+              type="button"
+              className="primary-cta"
+              onClick={onEventDetails}
+            >
+              Explore Events
+            </button>
+
+            <button type="button" className="secondary-cta" onClick={onSignup}>
               Get started
             </button>
-            <a href="#features" className="secondary-cta">View overview</a>
           </div>
 
           <div className="stats-row" aria-label="Key performance stats">
@@ -77,7 +103,11 @@ function HomePage({ onLogin, onSignup, onDashboard }) {
         </section>
 
         <aside className="hero-visual" aria-label="EventPulse revenue overview">
-          <img src={heroImg} alt="EventPulse dashboard preview" className="hero-image" />
+          <img
+            src={heroImg}
+            alt="EventPulse dashboard preview"
+            className="hero-image"
+          />
         </aside>
       </main>
 
@@ -113,7 +143,7 @@ function HomePage({ onLogin, onSignup, onDashboard }) {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
