@@ -36,7 +36,10 @@ function App() {
   if (page === 'ticketing') {
     return <TicketingPage onBack={() => setPage('create-event')} onSave={() => setPage('dashboard')} />
   }
+
+
   
+//  Attendee journey pages
 
   if (page === 'event-details') {
   return (
@@ -91,7 +94,7 @@ if (page === 'my-ticket') {
   )
 }
 
-  return <HomePage onLogin={() => setPage('login')} onSignup={() => setPage('signup')} onDashboard={() => setPage('dashboard')} />
+  return <HomePage onLogin={() => setPage('login')} onSignup={() => setPage('signup')} onDashboard={() => setPage('dashboard')} onEventDetails={() => setPage('event-details')} />
 }
 
 export default App

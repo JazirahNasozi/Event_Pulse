@@ -1,4 +1,8 @@
+import { useState } from 'react'
+
 function TicketSelectionPage({ onBack, onContinue }) {
+  const [quantity, setQuantity] = useState(1)
+  
   return (
     <div className="ticket-selection-page">
 
@@ -52,10 +56,22 @@ function TicketSelectionPage({ onBack, onContinue }) {
             </div>
 
             <div className="ticket-quantity">
-              <button type="button">−</button>
-              <span>1</span>
-              <button type="button">+</button>
-            </div>
+  <button
+    type="button"
+    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+  >
+    −
+  </button>
+
+  <span>{quantity}</span>
+
+  <button
+    type="button"
+    onClick={() => setQuantity(quantity + 1)}
+  >
+    +
+  </button>
+</div>
 
           </article>
 
