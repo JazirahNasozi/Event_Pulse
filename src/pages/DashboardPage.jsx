@@ -1,10 +1,11 @@
 import logoImg from '../assets/logo.png'
+import MobileSidebar from './MobileSidebar'
 
 const metrics = [
-  { label: 'Registrations', value: '248', note: 'Target: 300', icon: '♙', tone: 'blue' },
-  { label: 'Tickets sold', value: '186', note: '75% of capacity', icon: '▣', tone: 'indigo' },
-  { label: 'Check-ins', value: '142', note: 'Active at 4 gates', icon: '✓', tone: 'teal' },
-  { label: 'Revenue', value: 'UGX 4.8M', note: '+14% vs last week', icon: '▤', tone: 'orange' },
+  { label: 'Registrations', value: '850', note: 'Target: 1,000', icon: '♙', tone: 'blue' },
+  { label: 'Tickets sold', value: '720', note: '72% of capacity', icon: '▣', tone: 'indigo' },
+  { label: 'Check-ins', value: '624', note: 'Active at 4 gates', icon: '✓', tone: 'teal' },
+  { label: 'Revenue', value: 'UGX 54.8M', note: '+14% vs last week', icon: '▤', tone: 'orange' },
 ]
 
 const actions = [
@@ -15,13 +16,13 @@ const actions = [
 ]
 
 const activities = [
-  { icon: '♙', title: 'Sarah K. booked 2x General Pass', detail: 'Mobile Money completed (UGX 160,000)', time: '2m ago', tone: 'blue' },
+  { icon: '♙', title: 'Sarah K. booked 2x General Pass', detail: 'Mobile Money completed (UGX 140,000)', time: '2m ago', tone: 'blue' },
   { icon: '✪', title: 'VIP Tier Sold Out (+UGX 750k)', detail: '5 VIP tickets were purchased in bulk', time: '18m ago', tone: 'orange' },
   { icon: '▤', title: 'SMS reminder sent to attendees', detail: 'Broadcast sent to 248 attendees (99.4% delivered)', time: '1h ago', tone: 'teal' },
   { icon: '♧', title: 'James checked in', detail: 'Gate Turnstile 01 • QR Verified', time: '2h ago', tone: 'indigo' },
 ]
 
-function DashboardPage({ onHome, onCreateEvent, onTicketing, onBroadcast, onEventDetails, onAnalytics }) {
+function DashboardPage({ onHome, onEvents, onCreateEvent, onTicketing, onBroadcast, onEventDetails, onAnalytics, onCheckIn, onProfile }) {
   const openCreateEvent = () => onCreateEvent()
   const openEventDetails = () => onEventDetails()
 
@@ -32,8 +33,9 @@ function DashboardPage({ onHome, onCreateEvent, onTicketing, onBroadcast, onEven
           <img src={logoImg} alt="EventPulse" />
         </button>
         <div className="dashboard-top-actions">
+          <MobileSidebar activePage="home" onHome={onHome} onEvents={onEvents} onCheckIn={onCheckIn} onAnalytics={onAnalytics} onProfile={onProfile} />
           <span className="sync-status"><i /> Live sync • Just now</span>
-          <button type="button" className="profile-button" onClick={onEventDetails}>PC</button>
+          <button type="button" className="profile-button" onClick={onProfile} aria-label="Open profile">PC</button>
         </div>
       </header>
 
@@ -49,14 +51,14 @@ function DashboardPage({ onHome, onCreateEvent, onTicketing, onBroadcast, onEven
 
         <section className="event-banner" onClick={openEventDetails} role="button" tabIndex="0" onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') openEventDetails() }}>
           <div className="event-banner-image">
-            <span className="live-pill"><i /> LIVE IN 3 DAYS</span>
-            <span className="event-capacity">92% Booked</span>
+            <span className="live-pill"><i /> LIVE NOW</span>
+            <span className="event-capacity">85% Booked</span>
           </div>
           <div className="event-banner-content">
             <div>
               <span className="event-label">Featured event</span>
-              <h2>PulseLive East Africa Tech &amp; Music Summit</h2>
-              <div className="event-details"><span>▣ Fri, Oct 24 • 6:00 PM EAT</span><span>⌖ Kololo Ceremonial Grounds, Kampala</span></div>
+              <h2>Kampala Business Summit 2026</h2>
+              <div className="event-details"><span>▣ Fri, Sep 25 • 9:00 AM EAT</span><span>⌖ Serena Hotel, Kampala</span></div>
             </div>
             <button type="button" className="view-event-button" onClick={(event) => { event.stopPropagation(); openEventDetails() }}>View event <span>→</span></button>
           </div>
@@ -96,8 +98,8 @@ function DashboardPage({ onHome, onCreateEvent, onTicketing, onBroadcast, onEven
 
           <article className="actions-card">
             <div className="section-heading"><div><h2>Quick actions</h2><span>Keep your event moving</span></div></div>
-            <div className="actions-grid">{actions.map((action) => <button type="button" key={action.label} className="quick-action" onClick={action.label === 'Create event' ? openCreateEvent : action.label === 'Manage tickets' ? onTicketing : action.label === 'Send SMS' ? onBroadcast : action.label === 'Check in' ? onEventDetails : undefined}><b className={`quick-icon ${action.tone}`}>{action.icon}</b><span>{action.label}</span></button>)}</div>
-            <div className="capacity-card"><div><span>Event capacity</span><strong>248 / 300</strong></div><div className="capacity-bar"><i /></div><small>52 spots remaining</small></div>
+            <div className="actions-grid">{actions.map((action) => <button type="button" key={action.label} className="quick-action" onClick={action.label === 'Create event' ? openCreateEvent : action.label === 'Manage tickets' ? onTicketing : action.label === 'Send SMS' ? onBroadcast : action.label === 'Check in' ? onCheckIn : undefined}><b className={`quick-icon ${action.tone}`}>{action.icon}</b><span>{action.label}</span></button>)}</div>
+            <div className="capacity-card"><div><span>Event capacity</span><strong>850 / 1,000</strong></div><div className="capacity-bar"><i /></div><small>150 spots remaining</small></div>
           </article>
         </section>
 
@@ -107,13 +109,6 @@ function DashboardPage({ onHome, onCreateEvent, onTicketing, onBroadcast, onEven
         </section>
       </main>
 
-      <nav className="dashboard-nav" aria-label="Dashboard navigation">
-        <button type="button" className="active"><span>⌂</span>Home</button>
-        <button type="button" onClick={openEventDetails}><span>▣</span>Events</button>
-        <button type="button" onClick={openEventDetails}><span>⌗</span>Check-in</button>
-        <button type="button" onClick={onAnalytics}><span>⌁</span>Analytics</button>
-        <button type="button" onClick={openEventDetails}><span>◉</span>Profile</button>
-      </nav>
     </div>
   )
 }
